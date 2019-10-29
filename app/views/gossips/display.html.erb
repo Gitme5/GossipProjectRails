@@ -1,0 +1,15 @@
+<h1>Gossip numéro <%= params["id"] %></h1> <br/>
+
+<p>
+
+	<div><%= @gossip_display.title %></div><br/>
+	<div><%= @gossip_display.content %><div>
+	<div>Auteur : <%= @gossip_display.user.first_name %></div>
+	<br/>
+	<div>
+		<button><a href="/">Retour</a></button>
+		<button><a href="/<%= @gossip_display.user.first_name %>">En savoir plus</a></button>
+	</div>
+	
+
+</p>
