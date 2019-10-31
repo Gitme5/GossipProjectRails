@@ -1,0 +1,23 @@
+<h1>WELCOME to TGP - The Gossips Project</h1>
+
+<p>
+	<a href="<%= new_gossip_path %>" class="btn btn-success">Créer un potin</a>
+
+</p>
+
+<div class="card-columns" style = "display-flex">
+	<% @gossips.each_with_index do |gossip,index| %>
+		
+	<div class="card border-dark mb-3" style="width: 18rem;">
+	  <div class="card-body text-dark">
+	    <h5 class="card-title"><%= gossip.title %></h5> <!--gossip[:title]-->
+	    <p class="card-text">par: <%= gossip.user.first_name %></p> <!--gossip[:author]-->
+	    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-info">Consulter</a> 
+	    <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-secondary">Modifier </a>
+	    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-confirm="êtes-vous sûr de vouloir supprimer ce post ?" data-method="DELETE">Supprimer </a>  
+	  </div>
+	</div>
+ 
+	<% end %>
+</div>
+

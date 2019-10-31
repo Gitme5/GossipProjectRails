@@ -20,6 +20,7 @@ puts "City Done"
 #Création de users
 10.times do
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: rand(18..99), city: City.all.sample)
+  User.create!(first_name: "anonymous", last_name: "anonymous", description: Faker::Lorem.paragraph, email: "anonymous@anonymous.com", age: rand(18..99), city: City.all.sample)
 end
 puts "User Done"
 

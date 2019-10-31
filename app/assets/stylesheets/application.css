@@ -15,9 +15,13 @@
  */
 
 
-/*
+
 body
 {
+	background-color: black;
+}
+
+/*
 	font-family: Open Sans,Arial;
 	font-weight: 400;
 	font-size: 16px;
@@ -26,11 +30,12 @@ body
     max-width: 800px;
 	color: #454545;
 	text-align: justify;
-}
-
-h1
-{
-	line-height: 1.2;
+line-height: 1.2;
 	font-size: 2em;
 	font-weight: 400;
-}*/
+*/
+h1
+{
+	text-align: center;
+	
+}
