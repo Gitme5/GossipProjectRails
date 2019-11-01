@@ -1,11 +1,7 @@
 class GossipsController < ApplicationController
 
 	def index
-		@gossips = Gossip.all
-		# @gossips = []
-  	# Gossip.all.each do |my_gossip|
-    # 	@gossips << {author: my_gossip.user.first_name, title: my_gossip.title, user_id: my_gossip.user.id, gossip_id: my_gossip.id}
-		# end
+		@gossips = Gossip.order(:id).all
 	end
 
 	def show
@@ -23,7 +19,6 @@ class GossipsController < ApplicationController
 		#on récupère l'article affiché pour le modifier
 		@gossip = Gossip.find(params[:id])
 		@gossip.update(post_params)
-
 		#aprés la mise à jour on revient sur la page gossips
 		redirect_to gossips_path
 	end
@@ -37,24 +32,19 @@ class GossipsController < ApplicationController
 	def create
 		# avec les données obtenues à partir du formulaire
 		@gossip = Gossip.new(title: post_params[:title], content: post_params[:content], user_id: User.first.id)
-		#@gossip = Gossip.create!(user: User.all.sample, title: params[:title], content: params[:content]) 
+		@gossip.user = User.find_by(id: session[:user_id])
 
 	  if @gossip.save # essaie de sauvegarder en base @gossip
 	    # si ça marche, il redirige vers la page d'index du site
-	    redirect_to gossips_path
-	    #redirect_to root_path
-	    #redirect_to "http://localhost:3000"  
+	    flash[:success] = "Potin bien créé !"
+	    redirect_to gossips_path 
 
 	  else
 	    # sinon, il render la view new (qui est celle sur laquelle on est déjà)
+  		flash[:error] = "Erreur à la création du potin !"
   		render 'new'
 
 	  end
-	end
-
-
-	def post_params
-		post_params = params.require(:gossip).permit(:title, :content)
 	end
 
 
@@ -69,6 +59,14 @@ class GossipsController < ApplicationController
 	def user
 		#on selectionne le user correspondant au gossip en consultation
 		@user_display = User.find_by(first_name: params["user"])
+	end
+
+
+	private
+
+
+	def post_params
+		post_params = params.require(:gossip).permit(:title, :content)
 	end
 
 

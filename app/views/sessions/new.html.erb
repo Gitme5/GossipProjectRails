@@ -1,0 +1,41 @@
+<% if flash[:error] %>
+	<div class="alert alert-danger" role="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <%= flash[:error] %>
+	  <!--<p>Invalid email/password combination</p>-->
+	</div>
+<% elsif flash[:success] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:success] %>
+      </div>
+<% end %>
+
+
+
+<h3>CONNEXION</h3>
+<br>
+
+
+<div class="center">
+	<%= form_tag sessions_path, method: "post" do %>
+
+		<div class="form-group">
+			<%= label_tag 'Email' %>
+		    <%= text_field_tag 'email', nil, class: 'form-control'%>
+		    <br /> <br />
+		</div>
+
+	    <div class="form-group">
+		    <%= label_tag 'Mot de passe' %>
+		    <%= text_field_tag 'pswd', nil, class: 'form-control'%>
+		    <br /> <br />
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">Connexion</button>
+		</div>	    
+
+	<%end%>
+</div>
+

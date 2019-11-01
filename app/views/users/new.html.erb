@@ -1,0 +1,65 @@
+<h3>CREATION D'UN COMPTE</h3>
+<h5>Merci de remplir tous les champs</h5>
+<br>
+
+<div class="center">
+	<%= form_tag users_path, method: "post" do %>
+
+		<div class="form-group">
+			<%= label_tag 'Prénom' %>
+		    <%= text_field_tag 'first_name', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Nom' %>
+		    <%= text_field_tag 'last_name', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Email' %>
+		    <%= text_field_tag 'email', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Description' %>
+		    <%= text_field_tag 'description', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Age' %>
+		    <%= text_field_tag 'age', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Ville' %>
+		    <%= text_field_tag 'city', nil, class: 'form-control'%>
+		</div>
+
+	    <div class="form-group">
+		    <%= label_tag 'Mot de passe' %>
+		    <%= text_field_tag 'pswd', nil, class: 'form-control'%>
+		</div>
+
+	    <div class="form-group">
+		    <%= label_tag 'Confirmez le mot de passe' %>
+		    <%= text_field_tag 'pswd2', nil, class: 'form-control'%>
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">Inscription</button>
+		</div>
+	    
+
+	    <br>
+	    <% if @user.errors.any? %>
+		  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+		  <ul>
+		    <% @user.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		  </ul>
+		<% end %>
+
+	<%end%>
+</div>
+

@@ -14,11 +14,31 @@
  *= require_self
  */
 
+.jumb {
+	transform: scale(1);
+	margin-bottom: 20px;
+	margin-top: 2px;
+}
 
+.jumbotron {
+	height: 250px;
+	text-align: center;
+}
+
+.center {
+	width: 50%;
+	margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
 body
 {
-	background-color: black;
+	background-color: white;
 }
 
 /*
@@ -34,8 +54,10 @@ line-height: 1.2;
 	font-size: 2em;
 	font-weight: 400;
 */
-h1
+h1, h2, h3, h5
 {
+	width: 50%;
+	margin: 0 auto;
 	text-align: center;
 	
 }

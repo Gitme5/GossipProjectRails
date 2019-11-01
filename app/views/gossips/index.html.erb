@@ -1,9 +1,29 @@
-<h1>WELCOME to TGP - The Gossips Project</h1>
+<% if flash[:error] %>
+	<div class="alert alert-danger" role="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <%= flash[:error] %>
+	  <!--<p>Unsuccessful login due to the following reason(s) :</p>-->
+	  </div>
+<% elsif flash[:success] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:success] %>
+      </div>
+<% end %>
 
-<p>
-	<a href="<%= new_gossip_path %>" class="btn btn-success">Créer un potin</a>
 
-</p>
+<div class = "container jumb">
+	<div class="jumbotron">
+		<h1>WELCOME to TGP</h1>
+		<h2>The Gossip Project</h2>
+		<br>
+		<p>
+			<a href="<%= new_gossip_path %>" class="btn btn-outline-success">Créer un potin</a>
+			<br>
+		</p>
+	</div>
+
+</div>
 
 <div class="card-columns" style = "display-flex">
 	<% @gossips.each_with_index do |gossip,index| %>
